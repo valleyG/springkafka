@@ -16,15 +16,14 @@ import java.util.concurrent.TimeUnit;
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
     public static Logger logger = LoggerFactory.getLogger(DemoApplication.class);
+    private final CountDownLatch latch = new CountDownLatch(3);
+    @Autowired
+    private KafkaTemplate<String, String> template;
+
     public static void main(String[] args) {
 
         SpringApplication.run(DemoApplication.class, args);
     }
-
-    @Autowired
-    private KafkaTemplate<String, String> template;
-
-    private final CountDownLatch latch = new CountDownLatch(3);
 
     @Override
     public void run(String... args) throws Exception {
