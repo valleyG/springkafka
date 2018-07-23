@@ -11,11 +11,5 @@ import java.util.Map;
 
 @Configuration
 public class KafkaConfig {
-    @Bean
-    public KafkaAdmin admin(){
-        Map<String,Object> configs = new HashMap<>();
-        configs.put(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG,
-                StringUtils.arrayToCommaDelimitedString(kafkaEmbedded().getBrokerAddresses()));
-        return new  KafkaAdmin(configs);
-    }
+
 }
